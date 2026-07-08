@@ -50,6 +50,15 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease), opacity 0.3s var(--ease); }
 a:hover { color: var(--amber); }
 
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, blockquote {
+  font-feature-settings: "palt";
+}
+
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -77,6 +86,20 @@ a:hover { color: var(--amber); }
   mix-blend-mode: overlay;
   background-image:
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Scroll progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--rust));
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 1100;
+  pointer-events: none;
 }
 
 /* =========================================
@@ -146,6 +169,8 @@ a:hover { color: var(--amber); }
 }
 .site-nav a:hover { color: var(--text-1); }
 .site-nav a:hover::after { width: 100%; }
+.site-nav a.active { color: var(--amber); }
+.site-nav a.active::after { width: 100%; }
 
 @media (max-width: 640px) {
   .site-nav ul { gap: 14px; }
@@ -162,7 +187,7 @@ a:hover { color: var(--amber); }
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 140px 0 100px;
+  padding: 140px 0 150px;
 }
 
 .hero-bg {
@@ -248,7 +273,49 @@ a:hover { color: var(--amber); }
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 56px);
+  margin-bottom: 40px;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 16px;
+  border-left: 1px solid var(--border-warm);
+}
+.stat-value {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--amber);
+}
+.stat-value .stat-unit {
+  font-size: 0.5em;
+  color: var(--text-2);
+  font-weight: 500;
+  margin-left: 2px;
+}
+.stat-value .stat-arrow {
+  font-size: 0.45em;
+  color: var(--text-3);
+  margin: 0 8px;
+  vertical-align: 15%;
+}
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+@media (max-width: 640px) {
+  .hero-stats { gap: 16px; }
+  .stat { padding-left: 12px; }
 }
 
 .btn {
@@ -314,7 +381,7 @@ a:hover { color: var(--amber); }
 
 .hero-scroll {
   position: absolute;
-  bottom: 40px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -445,6 +512,72 @@ a:hover { color: var(--amber); }
   color: var(--text-3);
 }
 
+/* Timeline — 壁を削った道のり */
+.timeline {
+  margin-top: clamp(56px, 8vw, 96px);
+  padding-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--border);
+}
+.timeline-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  position: relative;
+  counter-reset: phase;
+}
+.timeline-item {
+  position: relative;
+  padding-top: 28px;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: calc(-1 * clamp(24px, 3vw, 40px));
+  height: 1px;
+  background: linear-gradient(90deg, var(--amber-dim), var(--border));
+}
+.timeline-item:last-child::before { right: 0; }
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+.timeline-phase {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 12px;
+}
+.timeline-item p {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text-2);
+}
+@media (max-width: 900px) {
+  .timeline-list { grid-template-columns: 1fr; gap: 0; }
+  .timeline-item {
+    padding: 0 0 32px 28px;
+    border-left: 1px solid var(--border);
+  }
+  .timeline-item:last-child { padding-bottom: 0; border-left-color: transparent; }
+  .timeline-item::before { display: none; }
+  .timeline-item::after {
+    top: 6px;
+    left: -4px;
+  }
+}
+
 /* =========================================
    Works
    ========================================= */
@@ -500,6 +633,9 @@ a:hover { color: var(--amber); }
   font-weight: 500;
   margin-bottom: 32px;
   min-height: 70px;
+}
+@media (max-width: 760px) {
+  .work-title { min-height: 0; }
 }
 
 .work-metrics {
@@ -796,6 +932,117 @@ a.work-badge-link:hover {
 }
 .narrowing-col li:last-child { border-bottom: none; }
 .narrowing-col.unfit li { color: var(--text-3); }
+
+/* =========================================
+   Flow — 進め方
+   ========================================= */
+.flow {
+  background: var(--bg-0);
+  border-top: 1px solid var(--border);
+}
+.flow-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+}
+@media (max-width: 1000px) { .flow-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .flow-grid { grid-template-columns: 1fr; } }
+
+.flow-step {
+  background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border: 1px solid var(--border);
+  padding: clamp(28px, 3vw, 36px);
+  position: relative;
+  transition: all 0.5s var(--ease);
+}
+.flow-step:hover {
+  border-color: var(--border-warm);
+  transform: translateY(-4px);
+}
+.flow-num {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 300;
+  color: var(--amber-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+.flow-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.8vw, 21px);
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 14px;
+}
+.flow-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text-2);
+}
+
+/* =========================================
+   FAQ — よくある、ためらい
+   ========================================= */
+.faq {
+  background: var(--bg-1);
+  border-top: 1px solid var(--border);
+}
+.faq-list {
+  max-width: 860px;
+  border-top: 1px solid var(--border);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(20px, 3vw, 28px) 8px;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.3s var(--ease);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover { color: var(--amber); }
+.faq-q-text {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 500;
+  line-height: 1.7;
+}
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--amber);
+  transition: transform 0.4s var(--ease);
+}
+.faq-icon::after { transform: rotate(90deg); }
+.faq-item[open] .faq-icon::after { transform: rotate(0deg); }
+.faq-item[open] .faq-q { color: var(--amber); }
+.faq-a {
+  padding: 0 8px clamp(24px, 3vw, 32px);
+}
+.faq-a p {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--text-2);
+  max-width: 720px;
+}
 
 /* =========================================
    Philosophy
