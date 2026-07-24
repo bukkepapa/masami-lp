@@ -70,6 +70,11 @@
       "@type": "Service",
       "name": "個人事業主向けLP制作",
       "description": "コーチ・サロン・士業など1人ビジネス向けの信頼構築型ランディングページ制作"
+    },
+    {
+      "@type": "Service",
+      "name": "業務アプリ制作（10万円〜）",
+      "description": "食品・小売・卸の中小企業向け。POSデータ分析ダッシュボード・伝票突合・自動発注提案などを低価格・運用費ゼロで制作"
     }
   ]
 }
@@ -127,7 +132,15 @@
       "name": "料金はどのくらいかかりますか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "法人向けの業務自動化は案件単価50万〜100万円＋月額保守、個人向けの再起伴走は月額5万〜10万円、LP制作は内容に応じてご相談です。まずは話を聞いてから。合わないものを売るつもりはありません。"
+        "text": "業務アプリ単品（POS分析・伝票突合・自動発注提案など）は10万円〜。法人向けの業務自動化パッケージは案件単価50万〜100万円＋月額保守、個人向けの再起伴走は月額5万〜10万円、LP制作は内容に応じてご相談です。まずは話を聞いてから。合わないものを売るつもりはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "システムの入れ替えが必要になりませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "なりません。既存の基幹システムやExcelはそのまま使い続けられます。CSVを置くだけで動く形で作るので、運用費・サーバー費も原則0円です。"
       }
     },
     {
@@ -294,20 +307,58 @@
       <article class="work-card">
         <header>
           <span class="work-tag">データ可視化 / Claude AI</span>
-          <h3 class="work-title">POSデータ可視化・<br>インサイトアプリ作成</h3>
+          <h3 class="work-title">100万行のPOSデータを、<br>CSVドロップで見える化</h3>
         </header>
         <div class="work-metrics">
           <div class="metric">
             <span class="metric-label">Before</span>
-            <span class="metric-value-sm">定型Excel<br>情報少なめ</span>
+            <span class="metric-value-sm">データはあるのに<br>レポート化できない</span>
           </div>
           <div class="metric-arrow" aria-hidden="true">→</div>
           <div class="metric highlight">
             <span class="metric-label">After</span>
-            <span class="metric-value-sm">投入は手動<br>分析は自動・高度化</span>
+            <span class="metric-value-sm">37ヶ月分を<br>店舗・商品・メーカー別に分析</span>
           </div>
         </div>
-        <p class="work-badge">飲料メーカー営業支援</p>
+        <p class="work-badge">地場スーパー納品実績・運用費0円</p>
+      </article>
+
+      <article class="work-card">
+        <header>
+          <span class="work-tag">経理 / 伝票突合</span>
+          <h3 class="work-title">伝票の目視照合を、<br>CSV2つの投入だけに</h3>
+        </header>
+        <div class="work-metrics">
+          <div class="metric">
+            <span class="metric-label">Before</span>
+            <span class="metric-value-sm">伝票番号と金額を<br>1件ずつ目視確認</span>
+          </div>
+          <div class="metric-arrow" aria-hidden="true">→</div>
+          <div class="metric highlight">
+            <span class="metric-label">After</span>
+            <span class="metric-value-sm">左右にCSVを入れると<br>不一致だけ浮かび上がる</span>
+          </div>
+        </div>
+        <p class="work-badge">経理部門で稼働中</p>
+      </article>
+
+      <article class="work-card">
+        <header>
+          <span class="work-tag">発注 / 需要予測</span>
+          <h3 class="work-title">属人化した発注業務に、<br>「発注番長」が自動提案</h3>
+        </header>
+        <div class="work-metrics">
+          <div class="metric">
+            <span class="metric-label">Before</span>
+            <span class="metric-value-sm">担当者の頭の中<br>不在だと発注が止まる</span>
+          </div>
+          <div class="metric-arrow" aria-hidden="true">→</div>
+          <div class="metric highlight">
+            <span class="metric-label">After</span>
+            <span class="metric-value-sm">ABC分析＋3年分の<br>季節傾向で自動提案</span>
+          </div>
+        </div>
+        <p class="work-badge">200〜300品目に対応</p>
       </article>
 
       <article class="work-card">
@@ -444,8 +495,8 @@
   <div class="container">
     <div class="section-head">
       <span class="chapter">Chapter 03</span>
-      <h2 id="services-heading" class="section-title">みっつの、<br>伴走のかたち。</h2>
-      <p class="section-lead">"仕組み"を求める法人へ。"再起"を望む個人へ。"信頼"を一枚に込めたい事業主へ。どれも、横を一緒に歩く。</p>
+      <h2 id="services-heading" class="section-title">よっつの、<br>伴走のかたち。</h2>
+      <p class="section-lead">"仕組み"を求める法人へ。"再起"を望む個人へ。"信頼"を一枚に込めたい事業主へ。そして、大きな投資はできない中小企業へ。どれも、横を一緒に歩く。</p>
     </div>
 
     <div class="services-grid">
@@ -523,6 +574,31 @@
             <span class="price-label">案件単価</span>
             <span class="price-value">要相談</span>
             <span class="price-sub">直接ご相談で柔軟対応</span>
+          </div>
+          <a href="#contact" class="btn btn-outline">相談する</a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-head">
+          <span class="service-label">Model D — for Small Businesses</span>
+          <h3 class="service-title">業務アプリ制作<br>10万円から</h3>
+          <p class="service-target">食品・小売・卸の中小企業向け</p>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">ベンダーに頼めば数百万円の世界を、10万円〜・納期1〜2週間で。POS分析、伝票突合、自動発注提案——既存システムはそのまま、CSVを置くだけで動く形で作ります。まず動くサンプルを見てから、決めてください。</p>
+          <ul class="service-list">
+            <li>POSデータ分析ダッシュボード</li>
+            <li>伝票突合・自動発注提案などの定型業務アプリ</li>
+            <li>運用費・サーバー費は原則0円</li>
+            <li>現場の人が自分でデータ更新できる設計</li>
+          </ul>
+        </div>
+        <div class="service-foot">
+          <div class="service-price">
+            <span class="price-label">案件単価</span>
+            <span class="price-value">10<span class="unit">万円</span>〜</span>
+            <span class="price-sub">納期1〜2週間・運用費0円</span>
           </div>
           <a href="#contact" class="btn btn-outline">相談する</a>
         </div>
@@ -620,7 +696,11 @@
       </details>
       <details class="faq-item">
         <summary class="faq-q"><span class="faq-q-text">料金はどのくらいかかりますか？</span><span class="faq-icon" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>法人向けの業務自動化は案件単価50万〜100万円＋月額保守、個人向けの再起伴走は月額5万〜10万円、LP制作は内容に応じてご相談です。ただし、まず話を聞いてから。合わないものを売るつもりはありません。</p></div>
+        <div class="faq-a"><p>業務アプリ単品（POS分析・伝票突合・自動発注提案など）は10万円〜。法人向けの業務自動化パッケージは案件単価50万〜100万円＋月額保守、個人向けの再起伴走は月額5万〜10万円、LP制作は内容に応じてご相談です。ただし、まず話を聞いてから。合わないものを売るつもりはありません。</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="faq-q-text">システムの入れ替えが必要になりませんか？</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>なりません。既存の基幹システムやExcelはそのまま使い続けられます。CSVを置くだけで動く形で作るので、運用費・サーバー費も原則0円。「現場の人が自分で更新できること」を、いちばん大事にしています。</p></div>
       </details>
       <details class="faq-item">
         <summary class="faq-q"><span class="faq-q-text">どんなツールを使うのですか？</span><span class="faq-icon" aria-hidden="true"></span></summary>
