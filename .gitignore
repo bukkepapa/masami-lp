@@ -1,0 +1,7 @@
+# 非公開メモ・商談ログ（絶対にpushしない）
+takase_meeting_*.md
+*商談*.md
+*meeting*.md
+
+# ローカル設定
+.claude/
